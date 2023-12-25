@@ -12,7 +12,7 @@ RSpec.describe Tutorial, type: :model do
     end
 
     it 'author consegue ser preenchido?' do
-      @tutorial.author = ''
+      @tutorial.author = 'eu'
       expect(@tutorial.author).to eq('eu')
     end
 

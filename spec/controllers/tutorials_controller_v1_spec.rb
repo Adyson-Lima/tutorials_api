@@ -28,4 +28,13 @@ RSpec.describe Api::V1::TutorialsController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/tutorials/id' do
+    it 'Consegue atualizar um tutorial e retornar status 200?' do
+      tutorial = Tutorial.last
+      patch :update, params: {tutorial: {subject: 'rails', author: 'eu'}, id: tutorial.id}
+      expect(response.body).to include_json(subject: 'rails')
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end

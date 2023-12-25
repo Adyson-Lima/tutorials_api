@@ -37,4 +37,13 @@ RSpec.describe Api::V1::TutorialsController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/tutorials/id' do
+    it 'Consegue excluir um tutorial e retornar status 204?' do
+      tutorial = Tutorial.last
+      delete :destroy, params: {id: tutorial.id}
+      expect(Tutorial.all).not_to include(tutorial)
+      expect(response).to have_http_status(204)
+    end    
+  end
+
 end

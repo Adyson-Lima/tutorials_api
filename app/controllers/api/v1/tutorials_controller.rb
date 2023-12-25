@@ -1,6 +1,6 @@
 class Api::V1::TutorialsController < ApplicationController
 
-  before_action :set_tutorial, only: %i[show] # show update destroy
+  before_action :set_tutorial, only: %i[show update] # show update destroy
 
   def index
     @tutorials = Tutorial.all 
@@ -15,6 +15,14 @@ class Api::V1::TutorialsController < ApplicationController
     @tutorial = Tutorial.new(tutorial_params)
     if @tutorial.save
       render json: @tutorial, status: :created, location: api_v1_tutorial_url(@tutorial)
+    else
+      render json: @tutorial.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @tutorial.update(tutorial_params)
+      render json: @tutorial
     else
       render json: @tutorial.errors, status: :unprocessable_entity
     end

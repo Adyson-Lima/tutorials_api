@@ -4,9 +4,13 @@ RSpec.describe Tutorial, type: :model do
 
   before{@tutorial = Tutorial.new}
 
-  describe 'subject consegue ser preenchido?' do
-    @tutorial.subject = ''
-    expect(@tutorial.subject).to eq('Ruby on Rails')
-  end
+  describe 'testes de preenchimento do model Tutorial' do
+
+    it 'subject consegue ser preenchido?' do
+      @tutorial.subject = 'Ruby on Rails'
+      expect(@tutorial.subject).to eq('Ruby on Rails')
+    end
+
+  end  
 
 end

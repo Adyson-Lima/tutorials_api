@@ -11,6 +11,15 @@ class Api::V1::TutorialsController < ApplicationController
     render json: @tutorial
   end
 
+  def create
+    @tutorial = Tutorial.new(tutorial_params)
+    if @tutorial.save
+      render json: @tutorial, status: :created, location: api_v1_tutorial_url(@tutorial)
+    else
+      render json: @tutorial.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_tutorial

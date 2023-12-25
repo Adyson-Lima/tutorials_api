@@ -28,7 +28,7 @@ RSpec.describe Tutorial, type: :model do
 
     it 'objeto tutorial invalido com campos obrigatorios não preenchidos?' do
       tutorial = Tutorial.new
-      expect(tutorial).to be_valid
+      expect(tutorial).to be_invalid
     end
 
   end

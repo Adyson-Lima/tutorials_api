@@ -20,4 +20,12 @@ RSpec.describe Api::V1::TutorialsController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/tutorials' do
+    it 'Consegue criar um tutorial e retornar status 201?' do
+      post :create, params: {tutorial: {subject: 'openbsd', author: 'eu'}, format: :json}
+      expect(response.body).to include_json(subject: 'openbsd')
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end

@@ -1,6 +1,6 @@
 class Api::V1::TutorialsController < ApplicationController
 
-  before_action :set_tutorial, only: %i[show update] # show update destroy
+  before_action :set_tutorial, only: %i[show update destroy] # show update destroy
 
   def index
     @tutorials = Tutorial.all 
@@ -26,6 +26,10 @@ class Api::V1::TutorialsController < ApplicationController
     else
       render json: @tutorial.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @tutorial.destroy!
   end
 
 private

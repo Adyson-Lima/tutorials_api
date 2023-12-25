@@ -21,8 +21,8 @@ RSpec.describe Tutorial, type: :model do
   describe 'testes de validação do model Tutorial' do
 
     it 'objeto tutorial valido com campos obrigatorios preenchidos?' do
-      @tutorial.subject = ''
-      @tutorial.author = ''
+      @tutorial.subject = 'mainframes'
+      @tutorial.author = 'eu'
       expect(@tutorial).to be_valid
     end
 
